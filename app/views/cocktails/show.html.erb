@@ -1,0 +1,23 @@
+<h2><%= @cocktail.name %></h2>
+
+<h3>List of doses required to make a '<%= @cocktail.name %>':</h3>
+
+<ul class="list-inline">
+  <% @cocktail.doses.each do |dose| %>
+  <li><%= dose.ingredient.name %>: <%= dose.description %></li>
+  <li><%= link_to 'Delete this dose', dose_path(dose), method: :delete %></li>
+  <% end %>
+</ul>
+
+<h4>Fill the form below if you want to add a new dose to this cocktail recipe:</h4>
+<%= simple_form_for([@cocktail, @dose]) do |f| %>
+  <%= f.input :description, placeholder: "Describe the dose needed of a ingredient" %>
+  <%= f.input :ingredient_id, collection: Ingredient.order(:name), prompt: "Select a ingredient" %>
+  <%= f.button :submit, class: "btn btn-primary" %>
+<% end %>
+
+<p><%= link_to 'Delete this cocktail', cocktail_path(@cocktail), method: :delete, data: { confirm: 'Are you sure?' } %></p>
+
+<p><%= link_to 'Index', cocktails_path %></p>
+
+
