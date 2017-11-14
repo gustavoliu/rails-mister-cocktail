@@ -4,6 +4,7 @@
     <div class="col col-xs-6 col-xs-offset-3">
       <%= simple_form_for(@cocktail) do |form| %>
         <%= form.input :name %>
+        <%= form.input :photos, as: :attachinary %>
         <%= form.submit "Submit", class: 'btn btn-success' %>
       <% end %>
     </div>

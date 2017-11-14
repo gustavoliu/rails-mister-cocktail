@@ -1,5 +1,13 @@
 <h2><%= @cocktail.name %></h2>
 
+<% @cocktail.photos.each do |photo| %>
+  <%= cl_image_tag photo.path, width: 300, height: 200, crop: :fill %>
+<% end %>
+
+<p>
+
+</p>
+
 <h3>List of doses required to make a '<%= @cocktail.name %>':</h3>
 
 <ul class="list-inline">
